@@ -1,0 +1,25 @@
+<a href="?action=add" class="btn btn-primary my-2">Add Driver</a>
+<br/>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Team</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#drivers}}
+    <tr>
+      <th scope="row">{{id}}</th>
+      <td>{{name}}</td>
+      <td>{{age}}</td>
+      <td>{{team}}</td>
+      <td><a href="?action=view&id={{id}}">View</a> | <a href="?action=edit&id={{id}}">Edit</a></td>
+    </tr> 
+  {{/drivers}}
+  </tbody>  
+</table>

@@ -1,0 +1,99 @@
+    {{#info}}
+    
+    <div id="form"></div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+               
+                $("#form").alpaca({
+                {{#is_edit}}
+                        "data": {{{data}}},
+                {{/is_edit}}
+                {{#is_view}}
+                        "data": {{{data}}},
+                        "view": "bootstrap-display",
+                {{/is_view}}
+                    "schema": {
+                        "title":"{{{title}}}",
+                        "description":"Which driver would you like to add?",
+                        "type":"object",
+                        {{#is_view}}
+                        
+                        {{/is_view}}
+                        "properties": {
+                            {{^is_add}}
+                            "id": {
+                                "type":"string",
+                                "title":"ID"
+                            },
+                            {{/is_add}}
+                            "name": {
+                                "type":"string",
+                                "title":"Name"
+                            },
+                            "age": {
+                                "type":"string",
+                                "title":"Age"
+                            },
+                            "team": {
+                                "type":"string",
+                                "title":"Team",
+                                "enum":['Mercedes','Red Bull','Ferrari','McLaren','Alfa Romeo','Alpine','AlphaTauri','Hass','Aston Martin','Williams']
+                            }
+                        }
+                    },
+                    "options": {
+                      "form": {
+                        "attributes": {
+                            "action": "?action=submit{{{mode}}}",
+                            "method": "post"
+                        },
+                         {{^is_view}}
+                        "buttons": {
+                            
+                            "submit": {
+                                "type": "submit",
+                                "value": "Submit",
+                                "attributes": {
+                                    "name": "submit"
+                                }
+                            }
+                        }
+                         {{/is_view}}
+                    },
+                     {{^is_view}}
+                        "fields": {
+                            {{^is_add}}
+                            "id": {
+                                "size": 20,
+                                "helper": "Driver ID.",
+                                "type": "hidden",
+                            },
+                            {{/is_add}}
+                            "name": {
+                                "size": 20,
+                                "helper": "Please enter driver name.",
+                                "placeholder": "Enter driver name"
+                            },
+                            "age": {
+                                "size": 20,
+                                "helper": "Please enter driver age.",
+                                "placeholder": "Enter driver age",
+                                "type": "number",
+                            },
+                            "team": {
+                                "type": "select",
+                                "helper": "Select their team.",
+                            },
+                            
+                        }
+                         {{/is_view}}
+                    }
+                });
+            });
+        </script>
+{{#is_view}}
+<a href="../web/" class="btn btn-default my-2">Back</a>
+{{/is_view}}
+{{/info}}
+
+
